@@ -29,7 +29,7 @@
             </span>
           </a>
           <ul class="treeview-menu active">
-            <li><a href="<?php echo base_url('Vendor/List')?>"><i class="fa fa-briefcase"></i>Radiation Zombie</a></li>
+            <li><a href="<?php echo base_url('Vendor/List')?>"><i class="fa fa-briefcase"></i>Radiatioasdaasn Zombie</a></li>
             <li><a href="<?php echo base_url('Vendor/Origin')?>"><i class="fa fa-list"></i>Radiation Van</a></li>
             <li><a href="<?php echo base_url('Vendor/Brand')?>"><i class="fa fa-list"></i>Team Competition</a></li>
           </ul>
@@ -42,8 +42,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('User/Role')?>"><i class="fa fa-unlock-alt"></i>Role</a></li>
             <li><a href="<?php echo base_url('User')?>"><i class="fa fa-user"></i>User</a></li>
+            <li><a href="<?php echo base_url('User/Role')?>"><i class="fa fa-unlock-alt"></i>Role</a></li>
+           
           </ul>
         <li><a href="<?php echo base_url("Login/logout")?>"onclick="return confirm('are you going to logout?');"><i class="fa fa-user-times"></i> <span>Sign Out</span></a></li>
       </ul>

@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                       <label for="text">Username</label>
-                      <input type="text" class="form-control" name="username" placeholder="Username" value = "<?php echo $data->username?>">
+                      <input type="text" class="form-control" name="username" placeholder="Username" value = "<?php echo $data->nickname?>">
                       <p class="text-red"><?php echo form_error('username')?></p>
                     </div>
                     <div class="form-group">
@@ -49,7 +49,7 @@
                         <?php foreach ($role as $datas){
 
                         ?>
-                            <option value="<?php echo $datas->id?>"><?php echo $datas->label ?></option>
+                            <option value="<?php echo $datas->id?>"><?php echo $datas->name ?></option>
                         <?php }?>
                         </select>
                     </div>

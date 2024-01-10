@@ -43,7 +43,7 @@
                         <label>Pilih Role</label>
                         <select class="form-control" name="id_role">
                           <?php foreach ($role as $data){ ?>
-                              <option value="<?php echo $data->id?>"><?php echo $data->label ?></option>
+                              <option value="<?php echo $data->id?>"><?php echo $data->name ?></option>
                           <?php }?>
                         </select>
                     </div>

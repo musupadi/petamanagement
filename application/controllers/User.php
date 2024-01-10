@@ -42,7 +42,7 @@ class User extends CI_Controller {
         $username = $this->session->userdata('nama');
         if($this->form_validation->run() === FALSE){
             $data['user'] = $this->Models->getID('user','nickname',$this->session->userdata('nama'));
-            $data['role'] =$this->Models->getAll('role');
+            $data['role'] =$this->Models->getAll('roles');
             $data['title'] = 'New User';
             $this->load->view('dashboard/header',$data);
             $this->load->view('User/List/side',$data);
@@ -58,27 +58,27 @@ class User extends CI_Controller {
             // $config['max_height']           = 768;
 
             $this->load->library('upload', $config);
-            $id = $this->Models->getID('m_user', 'username', $this->session->userdata('nama'));
+            $id = $this->Models->getID('user', 'nickname', $this->session->userdata('nama'));
             if ($this->upload->do_upload('gambar')) {
                 $data['name'] = $this->input->post('name');
-                $data['username'] = $this->input->post('username');
+                $data['nickname'] = $this->input->post('username');
                 $data['password'] = MD5($this->input->post('password'));
                 $data['email'] = $this->input->post('email');
-                $data['id_role '] = $this->input->post('id_role');
+                $data['idrole '] = $this->input->post('id_role');
                 $data['photo'] = $this->upload->data("file_name");
                 $data['created_by'] = $id[0]->id;
                 $data['updated_by'] = $id[0]->id;
             }else{
                 $data['name'] = $this->input->post('name');
-                $data['username'] = $this->input->post('username');
+                $data['nickname'] = $this->input->post('username');
                 $data['password'] = MD5($this->input->post('password'));
                 $data['email'] = $this->input->post('email');
-                $data['id_role '] = $this->input->post('id_role');
-                $data['photo'] = "logo.jpg";
+                $data['idrole '] = $this->input->post('id_role');
+                $data['photo'] = "default.png";
                 $data['created_by'] = $id[0]->id;
                 $data['updated_by'] = $id[0]->id;
             }
-            $this->Models->insert('m_user',$data);
+            $this->Models->insert('user',$data);
             $this->session->set_flashdata('pesan','<script>alert("Data berhasil disimpan")</script>');
             redirect(base_url('User'));
         }
@@ -87,9 +87,9 @@ class User extends CI_Controller {
         $this->form_validation->set_rules($this->rulesUser());
         $username = $this->session->userdata('nama');
         if($this->form_validation->run() === FALSE){
-            $data['user'] = $this->Models->getID('m_user','username',$this->session->userdata('nama'));
-            $data['role'] =$this->Models->getAll('m_role');
-            $data['users'] =$this->Models->getID('m_user','id',$id);
+            $data['user'] = $this->Models->getID('user','nickname',$this->session->userdata('nama'));
+            $data['role'] =$this->Models->getAll('roles');
+            $data['users'] =$this->Models->getID('user','id',$id);
             $data['title'] = 'Edit';
             $this->load->view('dashboard/header',$data);
             $this->load->view('User/List/side',$data);
@@ -106,33 +106,33 @@ class User extends CI_Controller {
             // $config['max_height']           = 768;
 
             $this->load->library('upload', $config);
-            $ID = $this->Models->getID('m_user', 'username', $this->session->userdata('nama'));
+            $ID = $this->Models->getID('user', 'nickname', $this->session->userdata('nama'));
             if ($this->upload->do_upload('gambar')) {
                 $data['name'] = $this->input->post('name');
-                $data['username'] = $this->input->post('username');
+                $data['nickname'] = $this->input->post('nickname');
                 $data['password'] = MD5($this->input->post('password'));
                 $data['email'] = $this->input->post('email');
-                $data['id_role '] = $this->input->post('id_role');
+                $data['idrole '] = $this->input->post('id_role');
                 $data['photo'] = $this->upload->data("file_name");
                 $data['updated_by'] = $ID[0]->id;
                 $data['updated_at'] = $this->Models->GetTimestamp();
             }else{
                 $data['name'] = $this->input->post('name');
-                $data['username'] = $this->input->post('username');
+                $data['nickname'] = $this->input->post('username');
                 $data['password'] = MD5($this->input->post('password'));
                 $data['email'] = $this->input->post('email');
-                $data['id_role '] = $this->input->post('id_role');
-                $data['photo'] = "logo.jpg";
+                $data['idrole '] = $this->input->post('id_role');
+                $data['photo'] = "default.png";
                 $data['updated_by'] = $ID[0]->id;
                 $data['updated_at'] = $this->Models->GetTimestamp();
             }
-            $this->Models->edit('m_user','id',$id,$data);
+            $this->Models->edit('user','id',$id,$data);
             $this->session->set_flashdata('pesan','<script>alert("Data berhasil disimpan")</script>');
             redirect(base_url('User'));
         }
     }
     public function Delete($id){
-        $this->Models->delete('m_user','id',$id);
+        $this->Models->delete('user','id',$id);
         $this->session->set_flashdata('Pesan', '<script>alert("Data berhasil dihapus")</script>');
         redirect(base_url('User'));
     }
